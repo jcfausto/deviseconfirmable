@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<% if user_signed_in? %>
+  <h1>Home Page - Welcome, <%= current_user.email %> </h1>
+   <% if !current_user.confirmed? %>
+    <h2>Don't forget to confirm your account! Please, check your e-mail for detailed instructions.</h2>
+  <% end %>
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete %> or <%= link_to 'Create some animals', animals_path %>
+<% else %>
+  <h1>Home Page</h1>
+  <%= link_to 'Login', user_session_path %>  or <%= link_to 'Sign Up', new_user_registration_path %>
+<% end %>
